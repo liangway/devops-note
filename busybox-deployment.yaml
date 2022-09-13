@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bb
+  template:
+    metadata:
+      labels:
+        app: bb
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "64Mi"
+              cpu: "50m"
+          command:
+            - sleep
+            - "3600"%
